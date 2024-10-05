@@ -1,7 +1,10 @@
 # FakeFlix GPT
 
   - Create React App
-  -Configured TailwindCSS
+  - Configured TailwindCSS
+  - Header
+  - Login Form
+  - SignUp Form
 
 # Features
    - Login/Sign Up 
