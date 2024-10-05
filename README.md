@@ -25,6 +25,11 @@
   - Update Store with TrailerVideo data
   - Embedded the Youtube and Video, made it mute and autoplay
   - Build SecondaryContainer
+  - Build Movie List
+  - Build Movie Card
+  - TMDB Image CDN URL
+  - Made the Browse page amazing with Tailwind CSS
+  - cuctom hooks made
 
 # Features
    - Login/Sign Up 
