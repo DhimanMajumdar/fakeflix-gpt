@@ -4,12 +4,10 @@ import { BG_URL } from "../utils/constants";
 import { checkValidateData } from "../utils/validate";
 import { auth } from "../utils/firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate=useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -21,9 +19,6 @@ const Login = () => {
   const handleButtonClick = () => {
     // validate the form data
     // checkValidateData(email,password)
-
-    // console.log(email.current.value);
-    // console.log(password.current.value);
 
     const message = checkValidateData(
       email.current.value,
@@ -43,7 +38,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -56,7 +50,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;

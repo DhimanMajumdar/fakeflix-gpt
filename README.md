@@ -13,6 +13,17 @@
   - Implement Sign In user API
   - Created Redux Store with userSlice
   - Sign Out Api 
+  - Bug Fix : can't go from browse to login and login to browse just like that
+  - Unsubscribe to onAuthStateChange callback
+  - Register for TMDB API and create an app and get access token
+  - Get data frpm TMDB now playing movies list API
+  - Custom Hook for NowPlayingMovies
+  - Create movieSlice
+  - Update Store with movies Data
+  - Planning for MainContainer & SecondaryContainer
+  - Fetch Data for Tailer Video
+  - Update Store with TrailerVideo data
+  - Embedded the Youtube and Video, made it mute and autoplay
 
 # Features
    - Login/Sign Up 
