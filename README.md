@@ -24,6 +24,7 @@
   - Fetch Data for Tailer Video
   - Update Store with TrailerVideo data
   - Embedded the Youtube and Video, made it mute and autoplay
+  - Build SecondaryContainer
 
 # Features
    - Login/Sign Up 

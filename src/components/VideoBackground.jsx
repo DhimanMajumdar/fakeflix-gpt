@@ -17,7 +17,7 @@ const VideoBackground = ({ movieId }) => {
         src={
           "https://www.youtube.com/embed/" +
           trailerVideo?.key +
-          "?autoplay=1&mute=1" // Autoplay and mute parameters in the URL
+          "?autoplay=1&mute=1&loop=1&playlist=" + trailerVideo?.key  // Autoplay, mute, and loop parameters
         }
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
