@@ -29,7 +29,7 @@
   - Build Movie Card
   - TMDB Image CDN URL
   - Made the Browse page amazing with Tailwind CSS
-  - cuctom hooks made
+  - custom hooks made
 
 # Features
    - Login/Sign Up 
