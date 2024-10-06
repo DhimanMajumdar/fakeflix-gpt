@@ -2,20 +2,17 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-// TODO: Add SDKs for Firebase products that you want to use
+// Import the functions you need from the SDKs you needant to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCXSRcaGv-QTnWJxD0IbpP8ds0q_Sqrdwg",
-  authDomain: "fakeflix-gpt.firebaseapp.com",
-  projectId: "fakeflix-gpt",
-  storageBucket: "fakeflix-gpt.appspot.com",
-  messagingSenderId: "1081253561342",
-  appId: "1:1081253561342:web:3b33eda02b8f7e99da76af",
-  measurementId: "G-EPJZ6VHDR0"
+  apiKey: "AIzaSyBVEF4hNzxWgIFe7Bg2DbjwkdgaZL1bglY",
+  authDomain: "fakeflixgpt-44c97.firebaseapp.com",
+  projectId: "fakeflixgpt-44c97",
+  storageBucket: "fakeflixgpt-44c97.appspot.com",
+  messagingSenderId: "295051094634",
+  appId: "1:295051094634:web:e56efe3ed48b96ad5fb813"
 };
 
 // Initialize Firebase
