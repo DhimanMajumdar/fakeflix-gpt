@@ -7,7 +7,7 @@ function App() {
   return (<>
    <Provider store={appStore}>
     <Body/>
-    <Footer/>
+
    </Provider>
    
   </>);
