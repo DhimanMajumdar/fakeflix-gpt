@@ -91,7 +91,7 @@ const Login = () => {
         <input
           ref={password}
           type="password"
-          placeholder="Enter password"
+          placeholder="Enter password (First letter capital)"
           className="p-4 my-4 w-full bg-gray-600 rounded-lg"
         />
         <p className="text-red-500 text-lg font-bold py-2">{errorMessage}</p>
