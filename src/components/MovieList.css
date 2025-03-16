@@ -1,16 +1,29 @@
 /* MovieList.css */
 .custom-scroll::-webkit-scrollbar {
-    height: 8px; /* Custom height for the scrollbar */
+  height: 8px; /* Custom height for the scrollbar */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #3b82f6; /* Custom color for the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background-color: transparent; /* Transparent track */
+}
+
+body {
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+@media (max-width: 640px) {
+  .custom-scroll {
+    padding-left: 10px; /* Padding for mobile devices to make scroll easier */
   }
-  
-  .custom-scroll::-webkit-scrollbar-thumb {
-    background-color: #3b82f6; /* Custom color for the scrollbar thumb */
-    border-radius: 10px; /* Rounded corners */
+}
+
+@media (min-width: 768px) {
+  .custom-scroll {
+    padding-left: 0;
   }
-  
-  .custom-scroll::-webkit-scrollbar-track {
-    background-color: transparent; /* Transparent track */
-  }
-  body {
-    overflow-x: hidden; /* Prevents horizontal scrolling */
-  }
+}

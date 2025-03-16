@@ -3,7 +3,7 @@ import Header from "./Header";
 import { BG_URL } from "../utils/constants";
 import { checkValidateData } from "../utils/validate";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
@@ -17,9 +17,6 @@ const Login = () => {
   };
 
   const handleButtonClick = () => {
-    // validate the form data
-    // checkValidateData(email,password)
-
     const message = checkValidateData(
       email.current.value,
       password.current.value
@@ -27,84 +24,88 @@ const Login = () => {
     setErrorMessage(message);
     if (message) return;
 
-    // Sign In / Sign Out
     if (!isSignInForm) {
-      // sign up logic
+      // Sign Up
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          setErrorMessage(error.code + " - " + error.message);
         });
     } else {
-      // sign in logic
+      // Sign In
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode+"-"+errorMessage);
+          setErrorMessage(error.code + " - " + error.message);
         });
     }
   };
 
   return (
     <>
-      <div className="absolute">
-        <Header />
-        <img src={BG_URL} alt="bg" />
+      {/* Full-screen background image */}
+      <div className="absolute inset-0 -z-20">
+        <img src={BG_URL} alt="bg" className="w-full h-screen object-cover" />
       </div>
 
+      {/* Header on top */}
+      <div className="relative z-10">
+        <Header />
+      </div>
+
+      {/* Centered Form */}
       <form
-        className="absolute w-3/12 mt-24 mx-auto left-0 right-0 my-36 p-12 bg-black bg-opacity-80 text-white rounded-lg"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
+        className="absolute w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto left-0 right-0 my-24 p-8 md:p-12 bg-black bg-opacity-80 text-white rounded-lg z-10"
+        onSubmit={(e) => e.preventDefault()}
       >
-        <h1 className="font-bold text-white text-3xl py-4">
+        <h1 className="font-bold text-2xl md:text-3xl py-2 md:py-4 text-center">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
+
         {!isSignInForm && (
           <input
             type="text"
             placeholder="Enter your full name"
-            className="p-4 my-4 w-full bg-gray-600 rounded-lg"
+            className="p-3 md:p-4 my-2 md:my-4 w-full bg-gray-600 rounded-lg text-sm md:text-base"
           />
         )}
+
         <input
           ref={email}
           type="text"
           placeholder="Enter your email address"
-          className="p-4 my-4 w-full bg-gray-600 rounded-lg"
+          className="p-3 md:p-4 my-2 md:my-4 w-full bg-gray-600 rounded-lg text-sm md:text-base"
         />
         <input
           ref={password}
           type="password"
           placeholder="Enter password (First letter capital)"
-          className="p-4 my-4 w-full bg-gray-600 rounded-lg"
+          className="p-3 md:p-4 my-2 md:my-4 w-full bg-gray-600 rounded-lg text-sm md:text-base"
         />
-        <p className="text-red-500 text-lg font-bold py-2">{errorMessage}</p>
+        <p className="text-red-500 text-sm md:text-base font-semibold py-1 md:py-2">{errorMessage}</p>
+
         <button
-          className="p-4 my-6 bg-red-700 w-full rounded-lg"
+          className="p-3 md:p-4 my-4 md:my-6 bg-red-700 w-full rounded-lg hover:bg-red-800 transition text-sm md:text-base"
           onClick={handleButtonClick}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
+
+        <p
+          className="py-2 md:py-4 text-center cursor-pointer text-sm md:text-base hover:underline"
+          onClick={toggleSignInForm}
+        >
           {isSignInForm
             ? "New to FakeFlix? Sign Up Now"
-            : "Already Registered. Sign In Now!"}
+            : "Already Registered? Sign In Now!"}
         </p>
       </form>
     </>

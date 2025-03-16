@@ -14,49 +14,48 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
         navigate("/");
       })
       .catch((error) => {
-        // An error happened.
+        console.error(error);
       });
   };
+
   useEffect(() => {
-    const unsuscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        dispatch(addUser({ uid, email, displayName }));
         navigate("/browse");
       } else {
-        // User is signed out
         dispatch(removeUser());
         navigate("/");
       }
     });
 
-    // when components unmounts, unsuscribe
-    return () => unsuscribe();
-  }, []);
+    return () => unsubscribe();
+  }, [dispatch, navigate]);
 
   const handleGptSearchClick = () => {
-    // toggle GPT search
     dispatch(toggleGptSearchView());
   };
 
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
+
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={LOGO} alt="logo" />
+    <header className="absolute w-full px-4 md:px-8 py-3 bg-gradient-to-b from-black z-10 flex justify-between items-center">
+      <img className="w-28 md:w-44" src={LOGO} alt="logo" />
       {user && (
-        <div className="flex p-2">
+        <div className="flex items-center space-x-2 md:space-x-4 flex-wrap md:flex-nowrap">
           {showGptSearch && (
             <select
-              className="py-2  px-4 my-2 bg-lime-500 text-black rounded-lg  mx-4"
+              className="py-1.5 px-2 md:py-2 md:px-3 bg-lime-500 text-black rounded-lg text-sm md:text-base"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -67,20 +66,25 @@ const Header = () => {
             </select>
           )}
           <button
-            className="py-2 px-4 my-2 bg-purple-800 text-white rounded-lg  mx-4"
+            className="py-1.5 px-3 md:py-2 md:px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700 transition text-sm md:text-base"
             onClick={handleGptSearchClick}
-          > {showGptSearch?"Homepage":"GPT SEARCH"}
+          >
+            {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
-          <img className="w-12 h-12" src={USER_ICON} alt="user-icon" />
+          <img
+            className="w-9 h-9 md:w-12 md:h-12 rounded-full object-cover"
+            src={USER_ICON}
+            alt="user-icon"
+          />
           <button
             onClick={handleSignOut}
-            className="bg-black cursor-pointer rounded-md text-white font-bold"
+            className="py-1.5 px-2 md:py-2 md:px-3 bg-red-600 rounded-lg text-white hover:bg-red-700 transition text-sm md:text-base"
           >
-            (Sign Out)
+            Sign Out
           </button>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 

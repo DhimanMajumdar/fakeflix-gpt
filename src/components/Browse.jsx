@@ -8,28 +8,35 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import GptSearch from './GptSearch';
 import { useSelector } from 'react-redux';
-import Footer from './Footer'; // ✅ Import Footer
+import Footer from './Footer';
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-  
+
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
   useUpcomingMovies();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen ">
+      {/* Header */}
       <Header />
-      <div className="flex-grow">
-        {showGptSearch ? <GptSearch /> : (
+
+      {/* Main Content */}
+      <main className="flex-grow w-full">
+        {showGptSearch ? (
+          <GptSearch />
+        ) : (
           <>
             <MainContainer />
             <SecondaryContainer />
           </>
         )}
-      </div>
-      <Footer /> {/* ✅ Footer only appears in Browse */}
+      </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
