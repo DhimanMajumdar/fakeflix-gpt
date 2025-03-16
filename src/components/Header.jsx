@@ -50,12 +50,17 @@ const Header = () => {
 
   return (
     <header className="absolute w-full px-4 md:px-8 py-3 bg-gradient-to-b from-black z-10 flex justify-between items-center">
-      <img className="w-28 md:w-44" src={LOGO} alt="logo" />
+      {/* Logo */}
+      <div className="flex items-center">
+        <img className="w-20 md:w-44" src={LOGO} alt="logo" />
+      </div>
+
+      {/* Right Side Controls */}
       {user && (
-        <div className="flex items-center space-x-2 md:space-x-4 flex-wrap md:flex-nowrap">
+        <div className="flex items-center space-x-2 md:space-x-4">
           {showGptSearch && (
             <select
-              className="py-1.5 px-2 md:py-2 md:px-3 bg-lime-500 text-black rounded-lg text-sm md:text-base"
+              className="py-1 px-2 md:py-1.5 md:px-3 bg-lime-500 text-black rounded-lg text-[11px] md:text-sm"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -66,19 +71,19 @@ const Header = () => {
             </select>
           )}
           <button
-            className="py-1.5 px-3 md:py-2 md:px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700 transition text-sm md:text-base"
+            className="py-1 px-2 md:py-1.5 md:px-3 bg-purple-800 text-white rounded-lg hover:bg-purple-700 transition text-[11px] md:text-sm whitespace-nowrap"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
           <img
-            className="w-9 h-9 md:w-12 md:h-12 rounded-full object-cover"
+            className="w-7 h-7 md:w-10 md:h-10 rounded-full object-cover"
             src={USER_ICON}
             alt="user-icon"
           />
           <button
             onClick={handleSignOut}
-            className="py-1.5 px-2 md:py-2 md:px-3 bg-red-600 rounded-lg text-white hover:bg-red-700 transition text-sm md:text-base"
+            className="py-1 px-2 md:py-1.5 md:px-3 bg-red-600 rounded-lg text-white hover:bg-red-700 transition text-[11px] md:text-sm"
           >
             Sign Out
           </button>

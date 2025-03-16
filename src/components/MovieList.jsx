@@ -11,17 +11,20 @@ const MovieList = ({ title, movies }) => {
   };
 
   return (
-    <div className="px-6 overflow-hidden">
-      <h1 className="text-3xl py-4 text-white">{title}</h1>
+    <div className="px-4 sm:px-6 overflow-hidden">
+      <h1 className="text-2xl sm:text-3xl py-4 text-white">{title}</h1>
       <div className="flex overflow-x-scroll custom-scroll cursor-pointer">
-        <div className="flex space-x-4 sm:space-x-2">
+        <div className="flex space-x-3 sm:space-x-4">
           {movies?.map((movie) => (
             <div
               key={movie.id}
-              onClick={() => handleCardClick(movie.title || movie.name)}
-              className="flex-shrink-0 w-32 sm:w-36 md:w-40 lg:w-48" // Ensuring responsiveness
+              className="flex-shrink-0"
             >
-              <MovieCard posterPath={movie.poster_path} />
+              <MovieCard
+                posterPath={movie.poster_path}
+                title={movie.title || movie.name}
+                onTrailerClick={() => handleCardClick(movie.title || movie.name)}
+              />
             </div>
           ))}
         </div>

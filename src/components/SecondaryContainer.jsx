@@ -11,7 +11,8 @@ const SecondaryContainer = () => {
 
   return (
     <div className="bg-stone-950">
-      <div className="-mt-52 pl-12 relative z-20">
+      {/* Conditional margin */}
+      <div className="relative z-20 md:-mt-52 pl-4 md:pl-12">
         {nowPlayingMovies && (
           <MovieList title={"Now Playing Movies"} movies={nowPlayingMovies} />
         )}

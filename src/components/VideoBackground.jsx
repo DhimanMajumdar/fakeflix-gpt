@@ -9,24 +9,21 @@ const VideoBackground = ({ movieId }) => {
 
   if (!trailerVideo) {
     return (
-      <div className="flex justify-center items-center w-screen h-screen bg-gray-800">
+      <div className="flex justify-center items-center w-screen h-[60vh] bg-gray-900">
         {/* Loading spinner */}
-        <div className="spinner-border animate-spin border-t-4 border-blue-500 w-16 h-16 rounded-full border-solid"></div>
+        <div className="animate-spin rounded-full h-14 w-14 border-t-4 border-blue-500 border-solid"></div>
       </div>
-    ); // Show loading spinner while fetching
+    );
   }
 
   return (
     <div className="w-screen">
       <iframe
         className="w-screen aspect-video"
-        src={
-          "https://www.youtube.com/embed/" +
-          trailerVideo?.key +
-          "?autoplay=1&mute=1&loop=1&playlist=" + trailerVideo?.key  // Autoplay, mute, and loop parameters
-        }
-        title="YouTube video player"
+        src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&mute=1&loop=1&playlist=${trailerVideo?.key}`}
+        title="YouTube trailer"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
       ></iframe>
     </div>
   );
