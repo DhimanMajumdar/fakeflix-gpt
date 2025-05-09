@@ -3,7 +3,10 @@ import Header from "./Header";
 import { BG_URL } from "../utils/constants";
 import { checkValidateData } from "../utils/validate";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
@@ -133,6 +136,13 @@ const Login = () => {
           {isSignInForm
             ? "New to FakeFlix? Sign Up Now"
             : "Already Registered? Sign In Now!"}
+        </p>
+
+        {/* Disclaimer */}
+        <p className="text-xs text-gray-400 text-center mt-4">
+          Disclaimer: This is just a dummy project to showcase my skills & for
+          learning purposes. This is not an actual streaming website. Please do
+          not enter your real credentials.
         </p>
       </form>
     </>
