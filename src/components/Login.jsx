@@ -76,7 +76,9 @@ const Login = () => {
 
       {/* Form */}
       <form
-        className="absolute w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto left-0 right-0 my-24 p-8 md:p-12 bg-black bg-opacity-80 text-white rounded-lg z-20"
+        className="absolute top-20 left-0 right-0 mx-auto w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 
+             p-6 md:p-8 bg-black bg-opacity-80 text-white rounded-lg z-20 
+             max-h-[90vh] overflow-auto"
         onSubmit={(e) => e.preventDefault()}
       >
         <h1 className="font-bold text-2xl md:text-3xl py-2 md:py-4 text-center">
@@ -105,7 +107,7 @@ const Login = () => {
           ref={password}
           type="password"
           autoComplete="current-password"
-          placeholder="Enter password (First letter capital)"
+          placeholder="Enter password"
           aria-label="Password"
           className="p-3 md:p-4 my-2 md:my-4 w-full bg-gray-600 rounded-lg text-sm md:text-base"
         />
