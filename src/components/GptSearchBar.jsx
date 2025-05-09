@@ -37,11 +37,13 @@ const GptSearchBar = () => {
     const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
     const tmdbResults = await Promise.all(promiseArray);
 
-    dispatch(addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults }));
+    dispatch(
+      addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
+    );
   };
 
   return (
-    <div className="pt-[30%] md:pt-[20%] flex justify-center px-4">
+    <div className="pt-[16%] md:pt-[10%] lg:pt-[8%] flex justify-center px-4">
       <form
         className="w-full md:w-1/2 bg-slate-950 grid grid-cols-12 rounded-lg"
         onSubmit={(e) => e.preventDefault()}
