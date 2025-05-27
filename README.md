@@ -7,6 +7,8 @@ A Netflix-like movie recommendation platform built using **React**, **Redux**, *
 
 ---
 
+> ✨ Live Site: [https://fakeflix-gpt-j9pd.vercel.app/](https://fakeflix-gpt-j9pd.vercel.app/)
+
 ## 🚀 Features
 
 - 🔍 Movie & TV show listings from **TMDB API**
